@@ -10,6 +10,8 @@ set smartindent
 set incsearch
 set ic
 set hls
+" set encoding to avoid LeaderF error
+set encoding=utf-8
 let mapleader=","
 noremap \ ,
 noremap <C-J> <C-W>j
@@ -17,6 +19,7 @@ noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
 noremap <C-H> <C-W>h
 noremap <C-C> <C-W>c
+noremap <f4> "+y
 
 
 """ download vimplug if it's not found
@@ -45,6 +48,7 @@ noremap <c-n> :LeaderfMru<cr>
 noremap <leader>f :LeaderfFunction!<cr>
 noremap <leader>b :LeaderfBuffer<cr>
 noremap <leader>t :LeaderfTag<cr>
+noremap <leader>g :LeaderfRgInteractive<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -64,10 +68,10 @@ let g:gutentags_ctags_tagfile = '.tags'
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
 if executable('ctags')
-	let g:gutentags_modules += ['ctags']
+  let g:gutentags_modules += ['ctags']
 endif
 if executable('gtags-cscope') && executable('gtags')
-	let g:gutentags_modules += ['gtags_cscope']
+  let g:gutentags_modules += ['gtags_cscope']
 endif
 " 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let g:gutentags_cache_dir = expand('~/.cache/tags')
@@ -86,10 +90,11 @@ let g:gutentags_plus_switch = 1
 
 
 """ vim-preview configuration
-noremap <leader>u :PreviewScroll -1<cr>
-noremap <leader>d :PreviewScroll +1<cr>
+noremap <m-u> :PreviewScroll -1<cr>
+noremap <m-d> :PreviewScroll +1<cr>
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+autocmd FileType qf nnoremap <silent><buffer> <leader><cr> <c-w><cr>
 " position of the preview window
 let g:preview#preview_position="bottom"
 noremap <f3> :PreviewTag<cr>
