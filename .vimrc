@@ -10,6 +10,8 @@ set smartindent
 set incsearch
 set ic
 set hls
+" set encoding to avoid LeaderF error
+set encoding=utf-8
 let mapleader=","
 noremap \ ,
 noremap <C-J> <C-W>j
@@ -17,6 +19,7 @@ noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
 noremap <C-H> <C-W>h
 noremap <C-C> <C-W>c
+noremap <f4> "+y
 
 
 """ download vimplug if it's not found
@@ -35,6 +38,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
 Plug 'vim-scripts/a.vim'
+Plug 'justinmk/vim-dirvish'
 call plug#end()
 
 
@@ -45,6 +49,7 @@ noremap <c-n> :LeaderfMru<cr>
 noremap <leader>f :LeaderfFunction!<cr>
 noremap <leader>b :LeaderfBuffer<cr>
 noremap <leader>t :LeaderfTag<cr>
+noremap <leader>g :LeaderfRgInteractive<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -86,10 +91,11 @@ let g:gutentags_plus_switch = 1
 
 
 """ vim-preview configuration
-noremap <leader>u :PreviewScroll -1<cr>
-noremap <leader>d :PreviewScroll +1<cr>
+noremap <m-u> :PreviewScroll -1<cr>
+noremap <m-d> :PreviewScroll +1<cr>
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+autocmd FileType qf nnoremap <silent><buffer> <leader><cr> <c-w><cr>
 " position of the preview window
 let g:preview#preview_position="bottom"
 noremap <f3> :PreviewTag<cr>
