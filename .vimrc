@@ -88,7 +88,7 @@ let g:gutentags_auto_add_gtags_cscope = 0
 "let g:gutentags_define_advanced_commands = 1
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
-
+"let g:gutentags_trace = 1
 
 """ vim-preview configuration
 noremap <m-u> :PreviewScroll -1<cr>
