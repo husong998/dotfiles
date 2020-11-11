@@ -6,8 +6,9 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: .tmux.conf
-    ~/.vimrc: .vimrc
+    ~/.tmux.conf: tmux.conf
+    ~/.alacritty.yml: alacritty.yml
+    ~/.vimrc: vimrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
